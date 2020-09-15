@@ -1,5 +1,5 @@
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue';
-
+import Datepicker from 'vuejs-datepicker';
 
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,5 +11,6 @@ export default {
     install(Vue) {
       Vue.use(BootstrapVue);
       Vue.use(IconsPlugin);
+      Vue.use(Datepicker);
     }
   };

@@ -18,68 +18,57 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="item in data" :key="item.id">
+            <tr v-for="(item, index) in data" :key="item.id">
               <th scope="row">{{ item.id}}</th>
               <td>{{ item.firstName}}</td>
               <td>{{ item.lastName}}</td>
-              <td>{{ item.permissionType}}</td>
+              <td>{{ item.permissionType.description}}</td>
               <td>{{ item.date | moment("dddd, MMMM Do YYYY")}}</td>
-              <td>Delete</td>
+              <td>
+                <button @click="onEdit(item.id)" class="btn btn-secundary btn-sm">Edit</button>
+                <button @click="onDelete(item.id, index)" class="btn btn-danger btn-sm">Delete</button>
+              </td>
             </tr>
           </tbody>
         </table>
-        <nav aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item">
-              <a class="page-link" href="#">Previous</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">1</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">2</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">3</a>
-            </li>
-            <li class="page-item">
-              <a class="page-link" href="#">Next</a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
   </div>
 </template>
 <script>
-const sampleData = [
-  {
-    id: 0,
-    firstName: "Aneudys",
-    lastName: "Amparo",
-    permissionType: "Birthday",
-    date: new Date(),
-  },
-  {
-    id: 1,
-    firstName: "Joel",
-    lastName: "Smith",
-    permissionType: "Emergency",
-    date: new Date(),
-  },
-  {
-    id: 2,
-    firstName: "John",
-    lastName: "Doe",
-    permissionType: "School",
-    date: new Date(),
-  },
-];
+import axios from "axios";
+
 export default {
   data() {
     return {
-      data: sampleData,
+      data: [],
     };
+  },
+  methods: {
+    onEdit: function (id) {
+      this.$router.push("/permissions/" + id);
+    },
+    onDelete: function (id, index) {
+      if (confirm("Do you really want to delete?")) {
+        axios
+          .delete("https://localhost:5001/api/Permissions/" + id)
+          .then((_) => {
+            console.log(_);
+            this.data.splice(index, 1);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+  },
+  mounted() {
+    axios
+      .get("https://localhost:5001/api/Permissions")
+      .then((response) => (this.data = response.data))
+      .catch((error) => {
+        console.log(error);
+      });
   },
 };
 </script>

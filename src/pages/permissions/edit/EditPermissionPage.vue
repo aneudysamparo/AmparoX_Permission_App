@@ -16,6 +16,7 @@
             v-for="item in permissionTypes"
             :key="item.id"
             :value="item.id"
+            :selected="item.id == addForm.permissionTypeId"
           >{{ item.description }}</option>
         </select>
       </div>
@@ -36,18 +37,18 @@ export default {
     return {
       permissionTypes: [],
       addForm: {
-        firstName: "John",
-        lastName: "Doe",
-        permissionTypeId: 3,
-        date: new Date(),
+        firstName: '',
+        lastName: '',
+        permissionTypeId: '',
+        date: '',
       },
     };
   },
   methods: {
     onSubmit: function () {
       axios
-        .post(
-          "https://localhost:5001/api/Permissions",
+        .put(
+          "https://localhost:5001/api/Permissions/"+ this.$route.params.id,
           JSON.stringify(this.addForm),
           {
             headers: {'Content-Type': 'application/json'}
@@ -62,6 +63,13 @@ export default {
     axios
       .get("https://localhost:5001/api/PermissionTypes")
       .then((response) => (this.permissionTypes = response.data));
+    axios
+      .get("https://localhost:5001/api/Permissions/" + this.$route.params.id )
+      .then((response) => {
+        this.addForm = response.data;
+        this.addForm.permissionTypeId = response.data.permissionType.id
+      });
+
   },
 };
 </script>

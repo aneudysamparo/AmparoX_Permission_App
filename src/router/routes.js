@@ -5,6 +5,7 @@ import Dashboard from '../pages/dashboard/Dashboard.vue';
 import PermissionsPage from '../pages/permissions/PermissionsPage.vue';
 import PermissionListPage from '../pages/permissions/list/PermissionListPage.vue';
 import AddPermissionPage from '../pages/permissions/add/AddPermissionPage.vue';
+import EditPermissionPage from '../pages/permissions/edit/EditPermissionPage.vue';
 
 import PermissionTypesPage from '../pages/permission-types/PermissionTypesPage.vue';
 import PermissionTypeListPage from '../pages/permission-types/list/PermissionTypeListPage.vue';
@@ -29,6 +30,10 @@ const routes = [{
                 {
                     path: 'add',
                     component: AddPermissionPage
+                }, 
+                {
+                    path: ':id',
+                    component: EditPermissionPage
                 }
             ]
         },

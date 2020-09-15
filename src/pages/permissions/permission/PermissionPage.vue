@@ -86,6 +86,7 @@ export default {
             }
           )
           .then(() => {
+            this.$toasted.success('Permission edited');
             window.history.length > 1
               ? this.$router.go(-1)
               : this.$router.push("/");
@@ -100,6 +101,7 @@ export default {
             }
           )
           .then(() => {
+            this.$toasted.success('Permission added');
             window.history.length > 1
               ? this.$router.go(-1)
               : this.$router.push("/");

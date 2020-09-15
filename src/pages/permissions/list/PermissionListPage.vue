@@ -15,7 +15,7 @@
                 <th scope="col">Last Name</th>
                 <th scope="col">Type</th>
                 <th scope="col">Date</th>
-                <th scope="col">Action</th>
+                <th scope="col" class="text-center">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
                 <td>{{ item.lastName}}</td>
                 <td>{{ item.permissionType.description}}</td>
                 <td>{{ item.date | moment("dddd, MMMM Do YYYY")}}</td>
-                <td>
+                <td class="text-center">
                   <button @click="onEdit(item.id)" class="btn btn-secundary btn-sm">Edit</button>
                   <button @click="onDelete(item.id, index)" class="btn btn-danger btn-sm">Delete</button>
                 </td>
@@ -45,7 +45,7 @@
 import axios from "axios";
 
 function onHttpError() {
-  this.$toasted.show(`Sorry, something bad happened, please try again.`)
+  this.$toasted.error(`Sorry, something bad happened, please try again.`)
 }
 export default {
   data() {

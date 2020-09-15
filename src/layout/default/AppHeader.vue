@@ -9,7 +9,7 @@
           <div class="navbar-nav-scroll">
             <ul class="navbar-nav bd-navbar-nav flex-row">
               <li class="nav-item">
-                <router-link class="nav-link" to="/">Home</router-link>
+                <router-link class="nav-link" to="/">Dashboard</router-link>
               </li>
               <li class="nav-item">
                 <router-link class="nav-link" to="/permissions">Permissions</router-link>

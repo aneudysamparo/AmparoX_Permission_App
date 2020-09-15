@@ -9,7 +9,7 @@ import PermissionPage from '../pages/permissions/permission/PermissionPage.vue';
 const routes = [{
     path: '',
     component: AppLayout,
-    redirect: 'dashboard',
+    redirect: 'permissions',
     children: [{
             path: 'dashboard',
             component: Dashboard

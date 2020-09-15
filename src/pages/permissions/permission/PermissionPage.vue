@@ -42,6 +42,7 @@
 </template>
 <script>
 import axios from "axios";
+import AppConfig from '../../../env/dev.env';
 
 export default {
   components: {},
@@ -79,7 +80,7 @@ export default {
       if (this.id && this.id > 0) {
         axios
           .put(
-            "https://localhost:5001/api/Permissions/" + this.$route.params.id,
+            `${AppConfig.HOSTU_URL}/Permissions/${this.id}`,
             JSON.stringify(this.addForm),
             {
               headers: { "Content-Type": "application/json" },
@@ -94,7 +95,7 @@ export default {
       } else {
         axios
           .post(
-            "https://localhost:5001/api/Permissions/",
+            `${AppConfig.HOSTU_URL}/Permissions/`,
             JSON.stringify(this.addForm),
             {
               headers: { "Content-Type": "application/json" },

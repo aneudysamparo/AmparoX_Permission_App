@@ -14,7 +14,7 @@
                 <th scope="col">First Name</th>
                 <th scope="col">Last Name</th>
                 <th scope="col">Type</th>
-                <th scope="col">Date</th>
+                <th scope="col">Requested For</th>
                 <th scope="col" class="text-center">Action</th>
               </tr>
             </thead>
@@ -43,6 +43,7 @@
 </template>
 <script>
 import axios from "axios";
+import AppConfig from '../../../env/dev.env';
 
 function onHttpError() {
   this.$toasted.error(`Sorry, something bad happened, please try again.`)
@@ -64,7 +65,7 @@ export default {
       }).then((res) => {
         if (res.isConfirmed) {
           axios
-            .delete("https://localhost:5001/api/Permissions/" + id)
+            .delete(`${AppConfig.HOSTU_URL}/Permissions/${id}`)
             .then(() => {
               this.$toasted.info('Permission deleted')
               this.data.splice(index, 1);
@@ -78,7 +79,7 @@ export default {
   },
   mounted() {
     axios
-      .get("https://localhost:5001/api/Permissions")
+      .get(`${AppConfig.HOSTU_URL}/Permissions/`)
       .then((response) => (this.data = response.data))
       .catch(() => {
         onHttpError();

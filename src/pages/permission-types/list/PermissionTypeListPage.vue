@@ -4,27 +4,21 @@
       <div class="col">
         <div class="d-flex justify-content-between">
           <h3>List Page</h3>
-          <router-link class="btn btn-primary" to="/permissions/add">Add New</router-link>
+          <router-link class="btn btn-primary" to="/permission-types/add">Add New</router-link>
         </div>
         <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">First Name</th>
-              <th scope="col">Last Name</th>
-              <th scope="col">Type</th>
-              <th scope="col">Date</th>
+              <th scope="col">Description</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
             <tr v-for="item in data" :key="item.id">
               <th scope="row">{{ item.id}}</th>
-              <td>{{ item.firstName}}</td>
-              <td>{{ item.lastName}}</td>
-              <td>{{ item.permissionType}}</td>
-              <td>{{ item.date | moment("dddd, MMMM Do YYYY")}}</td>
-              <td>Delete</td>
+              <td>{{ item.description }}</td>
+              <td>Edit</td>
             </tr>
           </tbody>
         </table>
@@ -53,32 +47,14 @@
 </template>
 <script>
 const sampleData = [
-  {
-    id: 0,
-    firstName: "Aneudys",
-    lastName: "Amparo",
-    permissionType: "Birthday",
-    date: new Date(),
-  },
-  {
-    id: 1,
-    firstName: "Joel",
-    lastName: "Smith",
-    permissionType: "Emergency",
-    date: new Date(),
-  },
-  {
-    id: 2,
-    firstName: "John",
-    lastName: "Doe",
-    permissionType: "School",
-    date: new Date(),
-  },
+  { id: 0, description: "Birthday" },
+  { id: 1, description: "Emergency" },
+  { id: 2, description: "School" },
 ];
 export default {
   data() {
     return {
-      data: sampleData,
+      data: sampleData
     };
   },
 };

@@ -4,9 +4,11 @@ import NotFoundPage from '../pages/errors/NotFoundPage.vue';
 import Dashboard from '../pages/dashboard/Dashboard.vue';
 import PermissionsPage from '../pages/permissions/PermissionsPage.vue';
 import PermissionListPage from '../pages/permissions/list/PermissionListPage.vue';
-import PermissionTypesPage from '../pages/permissions/types/PermissionTypesPage.vue';
+import AddPermissionPage from '../pages/permissions/add/AddPermissionPage.vue';
 
-
+import PermissionTypesPage from '../pages/permission-types/PermissionTypesPage.vue';
+import PermissionTypeListPage from '../pages/permission-types/list/PermissionTypeListPage.vue';
+import AddPermissionTypePage from '../pages/permission-types/add/AddPermissionTypePage.vue';
 
 const routes = [{
     path: '',
@@ -25,9 +27,23 @@ const routes = [{
                     component: PermissionListPage,
                 },
                 {
-                    path: 'types',
-                    component: PermissionTypesPage,
+                    path: 'add',
+                    component: AddPermissionPage
+                }
+            ]
+        },
+        {
+            path: "permission-types",
+            component: PermissionTypesPage,
+            redirect: '',
+            children: [{
+                    path: '',
+                    component: PermissionTypeListPage,
                 },
+                {
+                    path: 'add',
+                    component: AddPermissionTypePage
+                }
             ]
         },
 

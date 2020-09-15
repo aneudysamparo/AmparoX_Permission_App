@@ -1,4 +1,4 @@
-# permission-app
+# AmparoX PermissionApp
 
 ## Project setup
 ```

@@ -15,9 +15,6 @@
               <li class="nav-item">
                 <router-link class="nav-link" to="/permissions">Permissions</router-link>
               </li>
-              <li class="nav-item">
-                <router-link class="nav-link" to="/permission-types">Permission Types</router-link>
-              </li>
             </ul>
           </div>
         </nav>

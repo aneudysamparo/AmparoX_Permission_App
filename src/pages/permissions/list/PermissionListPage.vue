@@ -65,7 +65,7 @@ export default {
       }).then((res) => {
         if (res.isConfirmed) {
           axios
-            .delete(`${AppConfig.HOSTU_URL}/Permissions/${id}`)
+            .delete(`${AppConfig.HOST_URL}/Permissions/${id}`)
             .then(() => {
               this.$toasted.info('Permission deleted')
               this.data.splice(index, 1);
@@ -79,7 +79,7 @@ export default {
   },
   mounted() {
     axios
-      .get(`${AppConfig.HOSTU_URL}/Permissions/`)
+      .get(`${AppConfig.HOST_URL}/Permissions/`)
       .then((response) => (this.data = response.data))
       .catch(() => {
         onHttpError();

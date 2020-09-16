@@ -80,7 +80,7 @@ export default {
       if (this.id && this.id > 0) {
         axios
           .put(
-            `${AppConfig.HOSTU_URL}/Permissions/${this.id}`,
+            `${AppConfig.HOST_URL}/Permissions/${this.id}`,
             JSON.stringify(this.addForm),
             {
               headers: { "Content-Type": "application/json" },
@@ -95,7 +95,7 @@ export default {
       } else {
         axios
           .post(
-            `${AppConfig.HOSTU_URL}/Permissions/`,
+            `${AppConfig.HOST_URL}/Permissions/`,
             JSON.stringify(this.addForm),
             {
               headers: { "Content-Type": "application/json" },
@@ -117,11 +117,11 @@ export default {
   },
   mounted() {
     axios
-      .get("https://localhost:5001/api/PermissionTypes")
+      .get(`${AppConfig.HOST_URL}/PermissionTypes/`)
       .then((response) => (this.permissionTypes = response.data));
     if (this.id && this.id > 0) {
       axios
-        .get("https://localhost:5001/api/Permissions/" + this.$route.params.id)
+        .get(`${AppConfig.HOST_URL}/Permissions/${this.$route.params.id}`)
         .then((response) => {
           this.addForm = response.data;
           this.addForm.permissionTypeId = response.data.permissionType.id;
